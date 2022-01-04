@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   margin: 0 auto;
 
   @media ${device.tablet} {
-    max-width: 610px;
+    width: 100%;
+    display: flex;
   }
 `;
