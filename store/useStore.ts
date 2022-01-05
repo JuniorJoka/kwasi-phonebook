@@ -23,13 +23,24 @@ const useStore = create<Store>((set) => ({
       return { contacts: categories };
     }),
 
-  editContact: (contact) =>
+  editContact: (prev, contact) =>
     set((state) => {
-      const initial = contact.firstname[0];
+      const prevInitial = prev.firstname[0];
+      const currInitial = contact.firstname[0];
       const categories = state.contacts;
-      let contacts = categories[initial];
+      // delete previous entry
+      let contacts = categories[prevInitial];
       const newContacts = contacts.filter(({ id }) => contact.id !== id);
-      categories[initial] = [...newContacts, contact];
+      categories[prevInitial] = [...newContacts];
+      if (categories[prevInitial]) {
+        delete categories[prevInitial];
+      }
+      // insert new entry
+      if (!categories[currInitial]) {
+        categories[currInitial] = [];
+      }
+      contacts = categories[currInitial];
+      categories[currInitial] = [...contacts, contact];
 
       return { contacts: categories };
     }),
