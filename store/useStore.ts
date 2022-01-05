@@ -23,6 +23,17 @@ const useStore = create<Store>((set) => ({
       return { contacts: categories };
     }),
 
+  editContact: (contact) =>
+    set((state) => {
+      const initial = contact.firstname[0];
+      const categories = state.contacts;
+      let contacts = categories[initial];
+      const newContacts = contacts.filter(({ id }) => contact.id !== id);
+      categories[initial] = [...newContacts, contact];
+
+      return { contacts: categories };
+    }),
+
   removeContact: (contact: Contact) =>
     set((state) => {
       const initial = contact.firstname[0];
@@ -30,5 +41,9 @@ const useStore = create<Store>((set) => ({
       let contacts = categories[initial];
       const newContacts = contacts.filter(({ id }) => contact.id !== id);
       categories[initial] = newContacts;
+
+      return { contacts: categories };
     }),
 }));
+
+export default useStore;
