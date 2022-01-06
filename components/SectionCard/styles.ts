@@ -28,7 +28,7 @@ export const ProfileImage = styled.div`
   border-radius: 8px;
   color: hsl(200, 20%, 99%);
   display: grid;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: bold;
   height: 48px;
   margin-right: 8px;

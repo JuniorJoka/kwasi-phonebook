@@ -1,6 +1,6 @@
 import { Contact, SectionProps } from "../../shared/types";
 import useStore from "../../store/useStore";
-import { filter_data } from "../../utils";
+import { filter_data, formatNum } from "../../utils";
 import {
   Button,
   Card,
@@ -43,7 +43,7 @@ export const SectionCard = ({ searchTerm, modalHandler, detailHandler }: Section
                       <ProfileName>
                         {firstname} {lastname}
                       </ProfileName>
-                      <ProfileNumber>{number ? number : "No number"}</ProfileNumber>
+                      <ProfileNumber>{number ? formatNum(number) : "No number"}</ProfileNumber>
                     </ProfileContent>
                   </ProfileCard>
                 ))}
