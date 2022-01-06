@@ -13,7 +13,7 @@ export const Wrapper = styled(animated.div)`
 `;
 
 export const BackDrop = styled.div`
-  background-color: lightgray;
+  background-color: hsl(200, 50%, 10%);
   height: 100vh;
   opacity: 0.8;
 `;
@@ -29,7 +29,7 @@ export const Content = styled.div`
   width: 94%;
 
   @media ${device.tablet} {
-    width: 610px;
+    width: 410px;
   }
 
   svg {
@@ -55,6 +55,10 @@ export const ProfileImageSection = styled.div`
 export const ProfileInfoSection = styled.div`
   width: 100%;
 
+  div {
+    position: relative;
+  }
+
   input {
     background-color: hsl(200, 25%, 90%);
     border-radius: 8px;
@@ -62,7 +66,18 @@ export const ProfileInfoSection = styled.div`
     height: 36px;
     margin: 8px 0;
     outline: none;
+    padding: 0 36px 0 8px;
     width: 100%;
+
+    &:focus {
+      background-color: hsl(200, 20%, 85%);
+    }
+  }
+
+  svg {
+    position: absolute;
+    right: 4px;
+    top: 14px;
   }
 `;
 
@@ -76,7 +91,7 @@ export const ProfileImage = styled.div`
   border-radius: 8px;
   color: hsl(200, 20%, 99%);
   display: grid;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: bold;
   height: 46px;
   margin-top: 8px;
@@ -90,6 +105,11 @@ export const Extra = styled.div`
   label {
     display: block;
   }
+
+  div {
+    position: relative;
+  }
+
   input {
     background-color: hsl(200, 25%, 90%);
     border-radius: 8px;
@@ -97,6 +117,17 @@ export const Extra = styled.div`
     height: 36px;
     margin: 8px 0;
     outline: none;
+    padding: 0 36px 0 8px;
     width: 100%;
+
+    &:focus {
+      background-color: hsl(200, 20%, 85%);
+    }
+  }
+
+  svg {
+    position: absolute;
+    right: 4px;
+    top: 14px;
   }
 `;

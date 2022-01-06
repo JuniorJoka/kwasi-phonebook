@@ -1,6 +1,6 @@
 import { useTransition } from "@react-spring/web";
 import { useState } from "react";
-import { Check, X } from "react-feather";
+import { Check, X, XCircle } from "react-feather";
 import { v4 } from "uuid";
 
 import { voidFunc } from "../../shared/types";
@@ -64,7 +64,7 @@ export const Modal = ({ active, modalHandler }: { active: boolean; modalHandler:
                 <ContentHead>
                   <X onClick={cancelHandler} />
                   <h2>New Contact</h2>
-                  <Check onClick={handler} />
+                  {firstname ? <Check onClick={handler} /> : <div />}
                 </ContentHead>
                 <ProfileSection>
                   <ProfileImageSection>
@@ -74,40 +74,54 @@ export const Modal = ({ active, modalHandler }: { active: boolean; modalHandler:
                     </ProfileImage>
                   </ProfileImageSection>
                   <ProfileInfoSection>
-                    <input
-                      type="text"
-                      name="firstname"
-                      placeholder="first name"
-                      value={firstname}
-                      onChange={(e) => setFirst(e.target.value)}
-                    />
-                    <input
-                      type="text"
-                      name="lastname"
-                      placeholder="last name"
-                      value={lastname}
-                      onChange={(e) => setLast(e.target.value)}
-                    />
+                    <div>
+                      <input
+                        type="text"
+                        name="firstname"
+                        placeholder="first name"
+                        value={firstname}
+                        onChange={(e) => setFirst(e.target.value)}
+                      />
+                      {firstname && <XCircle onClick={() => setFirst("")} />}
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        name="lastname"
+                        placeholder="last name"
+                        value={lastname}
+                        onChange={(e) => setLast(e.target.value)}
+                      />
+                      {lastname && <XCircle onClick={() => setLast("")} />}
+                    </div>
                   </ProfileInfoSection>
                 </ProfileSection>
                 <Extra>
                   <label htmlFor="number">Add number</label>
-                  <input
-                    type="number"
-                    name="number"
-                    id="number"
-                    value={number}
-                    onChange={(e) => setNumber(e.target.value)}
-                  />
+                  <div>
+                    <input
+                      type="number"
+                      name="number"
+                      id="number"
+                      value={number}
+                      onChange={(e) => {
+                        e.target.value.length < 11 && setNumber(e.target.value);
+                      }}
+                    />
+                    {number && <XCircle onClick={() => setNumber("")} />}
+                  </div>
 
                   <label htmlFor="email">Add email</label>
-                  <input
-                    type="email"
-                    name="number"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                  <div>
+                    <input
+                      type="email"
+                      name="number"
+                      id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    {email && <XCircle onClick={() => setEmail("")} />}
+                  </div>
                 </Extra>
               </Content>
             </Wrapper>
