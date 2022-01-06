@@ -8,18 +8,9 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   padding: 12px;
   width: 100%;
-`;
 
-export const Profile = styled.div`
-  background-color: gray;
-  border-radius: 8px;
-  height: 34px;
-  width: 34px;
-`;
-
-export const Edit = styled.div`
-  background-color: gray;
-  border-radius: 8px;
-  height: 34px;
-  width: 34px;
+  svg {
+    cursor: pointer;
+    stroke: hsl(200, 50%, 10%);
+  }
 `;

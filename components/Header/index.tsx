@@ -1,11 +1,14 @@
-import { Edit, Profile, Wrapper } from "./styles";
+import { Plus } from "react-feather";
 
-export const Header = () => {
+import { voidFunc } from "../../shared/types";
+import { Wrapper } from "./styles";
+
+export const Header = ({ handler }: { handler: voidFunc }) => {
   return (
     <Wrapper>
-      <Profile />
+      <div></div>
       <h2>Contacts</h2>
-      <Edit />
+      <Plus onClick={handler} />
     </Wrapper>
   );
 };
