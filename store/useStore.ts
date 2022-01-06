@@ -1,16 +1,26 @@
+import { v4 } from "uuid";
 import create from "zustand";
+
 import { Store, Contact } from "../shared/types";
+import { isAlpha } from "../utils";
 
 const useStore = create<Store>((set) => ({
   contacts: {},
   activeContact: null,
   previousContacts: [],
   setActive: (contact) => set((state) => ({ activeContact: contact })),
-  addPrevious: (contact) => set((state) => ({ previousContacts: [...state.previousContacts, contact] })),
+  addPrevious: (contact) =>
+    set((state) => {
+      const contactsWithoutContact = state.previousContacts.filter(({ id }) => contact.id !== id);
+      return {
+        previousContacts: [...contactsWithoutContact, contact],
+      };
+    }),
 
   addContact: (contact) =>
     set((state) => {
-      const initial = contact.firstname[0];
+      let initial = contact.firstname[0];
+      initial = isAlpha(initial) ? initial.toUpperCase() : "#";
       const categories = state.contacts;
       if (!categories[initial]) {
         categories[initial] = [];
@@ -25,8 +35,12 @@ const useStore = create<Store>((set) => ({
 
   editContact: (prev, contact) =>
     set((state) => {
-      const prevInitial = prev.firstname[0];
-      const currInitial = contact.firstname[0];
+      let prevInitial = prev.firstname[0];
+      prevInitial = isAlpha(prevInitial) ? prevInitial.toUpperCase() : "#";
+
+      let currInitial = contact.firstname[0];
+      currInitial = isAlpha(currInitial) ? currInitial.toUpperCase() : "#";
+
       const categories = state.contacts;
       // delete previous entry
       let contacts = categories[prevInitial];
@@ -47,11 +61,16 @@ const useStore = create<Store>((set) => ({
 
   removeContact: (contact: Contact) =>
     set((state) => {
-      const initial = contact.firstname[0];
+      let initial = contact.firstname[0];
+      initial = isAlpha(initial) ? initial.toUpperCase() : "#";
       const categories = state.contacts;
       let contacts = categories[initial];
       const newContacts = contacts.filter(({ id }) => contact.id !== id);
       categories[initial] = newContacts;
+
+      if (categories[initial]) {
+        delete categories[initial];
+      }
 
       return { contacts: categories };
     }),
