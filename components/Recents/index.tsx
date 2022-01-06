@@ -10,7 +10,7 @@ export const Recents = () => {
         <Card key={id}>
           <CardImage>
             {firstname[0].toUpperCase()}
-            {lastname[0].toUpperCase()}
+            {lastname && lastname[0].toUpperCase()}
           </CardImage>
           <CardContent>
             <ProfileName>{`${firstname}`}</ProfileName>
