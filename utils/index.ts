@@ -12,8 +12,14 @@ export const filter_data = (searchTerm: string, data: ContactList): ContactList 
         number.includes(searchTerm) ||
         email.includes(searchTerm)
     );
-    if (resultSet) result[key] = resultSet;
+    if (resultSet.length !== 0) {
+      result[key] = resultSet;
+    }
   }
 
   return result;
+};
+
+export const isAlpha = (char: string) => {
+  return char.toLowerCase() != char.toUpperCase();
 };
