@@ -10,6 +10,23 @@ export interface ContactList {
   [key: string]: Contact[];
 }
 
+export interface DetailProps {
+  onMobile: boolean;
+  active: boolean;
+  modalHandler: voidFunc;
+  detailHandler?: voidFunc;
+}
+
+export interface SearchProps {
+  handler: (event: any) => void;
+  term: string;
+  resetHandler: voidFunc;
+}
+export interface SectionProps {
+  searchTerm: string;
+  modalHandler: voidFunc;
+  detailHandler: voidFunc;
+}
 export interface Store {
   contacts: ContactList;
   activeContact: Contact | null;
@@ -22,16 +39,3 @@ export interface Store {
 }
 
 export type voidFunc = () => void;
-
-export interface DetailProps {
-  onMobile: boolean;
-  active: boolean;
-  modalHandler: voidFunc;
-  detailHandler?: voidFunc;
-}
-
-export interface SectionProps {
-  searchTerm: string;
-  modalHandler: voidFunc;
-  detailHandler: voidFunc;
-}
