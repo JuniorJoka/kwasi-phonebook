@@ -53,7 +53,7 @@ const App = () => {
     <Main>
       <ContactList>
         <Header handler={openModal} />
-        <Search handler={searchHandler} term={searchTerm} />
+        <Search handler={searchHandler} term={searchTerm} resetHandler={() => setSearchTerm("")} />
         <Recents />
         <SectionCard searchTerm={searchTerm} modalHandler={openModal} detailHandler={openDetail} />
       </ContactList>
