@@ -1,10 +1,15 @@
+import { animated } from "@react-spring/web";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+import { device } from "../../shared/device";
+
+export const Wrapper = styled(animated.div)`
+  color: hsl(200, 50%, 10%);
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
 `;
 
 export const BackDrop = styled.div`
@@ -14,7 +19,7 @@ export const BackDrop = styled.div`
 `;
 
 export const Content = styled.div`
-  background: white;
+  background-color: hsl(200, 20%, 99%);
   border-radius: 8px;
   left: 50%;
   padding: 8px;
@@ -22,6 +27,15 @@ export const Content = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   width: 94%;
+
+  @media ${device.tablet} {
+    width: 610px;
+  }
+
+  svg {
+    cursor: pointer;
+    stroke: hsl(200, 50%, 10%);
+  }
 `;
 
 export const ContentHead = styled.div`
@@ -39,8 +53,10 @@ export const ProfileImageSection = styled.div`
 `;
 
 export const ProfileInfoSection = styled.div`
+  width: 100%;
+
   input {
-    background-color: gray;
+    background-color: hsl(200, 25%, 90%);
     border-radius: 8px;
     border: none;
     height: 36px;
@@ -56,10 +72,15 @@ export const ProfileSection = styled.div`
 `;
 
 export const ProfileImage = styled.div`
-  background-color: gray;
+  background-color: hsl(200, 50%, 10%);
   border-radius: 8px;
+  color: hsl(200, 20%, 99%);
+  display: grid;
+  font-size: 28px;
+  font-weight: bold;
   height: 46px;
   margin-top: 8px;
+  place-items: center;
   width: 46px;
 `;
 
@@ -70,7 +91,7 @@ export const Extra = styled.div`
     display: block;
   }
   input {
-    background-color: gray;
+    background-color: hsl(200, 25%, 90%);
     border-radius: 8px;
     border: none;
     height: 36px;
