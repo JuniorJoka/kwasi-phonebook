@@ -83,7 +83,7 @@ export const DetailCard = ({ onMobile, active, modalHandler, detailHandler }: De
       setLast(lastname);
       setEmail(email);
       setNumber(number);
-      prev({ ...contact, epoch: Date.now() });
+      prev({ ...contact });
     }
   }, [contact]);
 
