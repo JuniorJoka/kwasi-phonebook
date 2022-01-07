@@ -10,7 +10,7 @@ export const Wrapper = styled(animated.div)`
   width: 100%;
   overflow: scroll;
   color: hsl(200, 50%, 10%);
-
+  z-index: 2;
   svg {
     stroke: hsl(200, 50%, 10%);
     cursor: pointer;

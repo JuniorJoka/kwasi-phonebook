@@ -2,10 +2,10 @@ import { v4 } from "uuid";
 import create from "zustand";
 
 import { Store, Contact } from "../shared/types";
-import { isAlpha } from "../utils";
+import { isAlpha, populateContacts } from "../utils";
 
 const useStore = create<Store>((set) => ({
-  contacts: {},
+  contacts: populateContacts(),
   activeContact: null,
   previousContacts: [],
   setActive: (contact) => set((state) => ({ activeContact: contact })),
