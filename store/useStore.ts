@@ -46,7 +46,7 @@ const useStore = create<Store>((set) => ({
       let contacts = categories[prevInitial];
       const newContacts = contacts.filter(({ id }) => contact.id !== id);
       categories[prevInitial] = [...newContacts];
-      if (!categories[prevInitial]) {
+      if (!categories[prevInitial].length) {
         delete categories[prevInitial];
       }
       // insert new entry
@@ -68,7 +68,7 @@ const useStore = create<Store>((set) => ({
       const newContacts = contacts.filter(({ id }) => contact.id !== id);
       categories[initial] = newContacts;
 
-      if (!categories[initial]) {
+      if (!categories[initial].length) {
         delete categories[initial];
       }
 
