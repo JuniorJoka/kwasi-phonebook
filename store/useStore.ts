@@ -1,4 +1,3 @@
-import { v4 } from "uuid";
 import create from "zustand";
 
 import { Store, Contact } from "../shared/types";

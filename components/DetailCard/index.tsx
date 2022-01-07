@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { CheckCircle, Edit, MessageCircle, Phone, Trash2, Video, X } from "react-feather";
 
-import { DetailProps, voidFunc } from "../../shared/types";
+import { DetailProps } from "../../shared/types";
 import useStore from "../../store/useStore";
 import {
   Action,
