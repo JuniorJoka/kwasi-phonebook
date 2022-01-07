@@ -68,7 +68,7 @@ const useStore = create<Store>((set) => ({
       const newContacts = contacts.filter(({ id }) => contact.id !== id);
       categories[initial] = newContacts;
 
-      if (categories[initial]) {
+      if (!categories[initial]) {
         delete categories[initial];
       }
 
