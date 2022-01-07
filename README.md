@@ -11,7 +11,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, clone the repo
 
 ```bash
-git clone
+git clone https://github.com/JuniorJoka/kwasi-phonebook.git
+cd kwasi-phonebook
 ```
 
 Then, install dependencies
